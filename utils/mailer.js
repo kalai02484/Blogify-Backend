@@ -12,12 +12,12 @@ const transporter = nodemailer.createTransport({
 });
 
 const sendEmail = async (to, subject, text) => {
-  const mailOptions = await transporter.sendMail({
+  const mailOptions = {
     from: process.env.PASS_MAIL,
-    to: to,
-    subject: subject,
-    text: text,
-  });
+    to,
+    subject,
+    text
+  };
   try {
     await transporter.sendMail(mailOptions);
     console.log("Email sent successfully");
